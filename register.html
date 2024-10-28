@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="game.html">Play</a>
+        <a href="login.html">Login</a>
+        <a href="tutorial.html">Tutorials/FAQ</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="profile.html">Profile</a>
+    </nav>
+
+    <div class="signup-container">
+        <div class="signup-box">
+            <h2>Create Your Account</h2>
+            <p>Fill in the information below to sign up</p>
+            <form onsubmit="handleSignUp(event)">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Sign Up</button>
+            </form>
+            <p class="login-link">Already have an account? <a href="login.html">Log in</a></p>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>
