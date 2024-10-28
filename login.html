@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link href="style.css" rel="stylesheet"> <!-- Link to main CSS file -->
+    <title>Login</title>
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
+
     <nav>
         <a href="index.html">Home</a>
         <a href="game.html">Play</a>
@@ -15,7 +16,22 @@
         <a href="leaderboard.html">Leaderboard</a>
         <a href="profile.html">Profile</a>
     </nav>
-    <h1>Page Title</h1>
-    <p>Will feature a login page.</p>
+
+    <div class="login-container">
+        <h2>Login to Your Account</h2>
+        <form onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
