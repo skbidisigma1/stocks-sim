@@ -5,9 +5,7 @@ function handleSignUp(event) {
 
     document.cookie = `signupData=${encodeURIComponent(
         JSON.stringify({ username, password })
-    )}; path=/; max-age=86400`;
-
-    alert("Sign-up data saved in a cookie for testing.");
+    )}; path=/; max-age=259200`;
 }
 
 function viewSignUpData() {
@@ -20,7 +18,5 @@ function viewSignUpData() {
             decodeURIComponent(signupDataCookie.split("=")[1])
         );
         document.body.innerHTML += `<p>Username: ${signupData.username}, Password: ${signupData.password}</p>`;
-    } else {
-        alert("No sign-up data found.");
     }
 }
