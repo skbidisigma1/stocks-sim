@@ -29,7 +29,7 @@ nav a:hover {
     text-decoration: underline;
 }
 
-.login-container {
+.auth-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,7 +38,7 @@ nav a:hover {
     margin-top: 60px; /* Offset for fixed navigation */
 }
 
-.login-box {
+.auth-box {
     background-color: #fff;
     padding: 30px;
     border-radius: 10px;
@@ -68,7 +68,7 @@ label {
     color: #333;
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"], input[type="email"] {
     width: 100%;
     padding: 12px;
     border-radius: 5px;
@@ -93,16 +93,16 @@ button:hover {
     background-color: #555;
 }
 
-.register-link {
+.auth-link {
     margin-top: 15px;
     font-size: 0.85em;
 }
 
-.register-link a {
+.auth-link a {
     color: #007bff;
     text-decoration: none;
 }
 
-.register-link a:hover {
+.auth-link a:hover {
     text-decoration: underline;
 }
