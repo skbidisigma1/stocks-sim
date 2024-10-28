@@ -5,109 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Development Team's Stock Simulation Game</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-        }
-        .container {
-            width: 80%;
-            max-width: 1000px;
-            margin: 20px auto;
-            text-align: center;
-            flex: 1;
-        }
-        .intro {
-            margin: 20px 0;
-        }
-        .intro h2 {
-            color: #444;
-        }
-        .intro p {
-            font-size: 1.2em;
-        }
-        .features {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-        .feature {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 30%;
-            margin: 10px;
-            padding: 20px;
-            transition: transform 0.3s;
-        }
-        .feature:hover {
-            transform: scale(1.05);
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 5px 0;
-        }
-        @media (max-width: 768px) {
-            .feature {
-                width: 100%;
-                margin: 10px 0;
-            }
-        }
-    </style>
+    <link href="style.css" rel="stylesheet"> <!-- Link to main CSS file -->
 </head>
 <body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="game.html">Play</a>
+        <a href="login.html">Login</a>
+        <a href="tutorial.html">Tutorials/FAQ</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="profile.html">Profile</a>
+    </nav>
 
-<header>
-    <h1>Welcome to Development Team's Stock Simulation Game!</h1>
-</header>
+    <header>
+        <h1>Welcome to Development Team's Stock Simulation Game!</h1>
+    </header>
 
-<div class="container">
-    <div class="intro">
-        <h2>Your Journey into Stock Trading Begins Here</h2>
-        <p>Experience the thrill of the stock market without the financial risk in our innovative stock simulation game. Dive into real-time trading and sharpen your skills!</p>
+    <div class="container">
+        <div class="intro">
+            <h2>Your Journey into Stock Trading Begins Here</h2>
+            <p>Experience the thrill of the stock market without the financial risk in our innovative stock simulation game. Dive into real-time trading and sharpen your skills!</p>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <h3>Real-Time Trading</h3>
+                <p>Engage in buying and selling stocks as you watch market trends and analyze data to make informed decisions.</p>
+            </div>
+            <div class="feature">
+                <h3>Interactive Tutorials</h3>
+                <p>New to stock trading? No worries! Our easy-to-follow tutorials will guide you through the basics and beyond.</p>
+            </div>
+            <div class="feature">
+                <h3>Community Features</h3>
+                <p>Join a vibrant community of fellow traders to share tips, strategies, and compete in exciting challenges.</p>
+            </div>
+        </div>
+
+        <div class="upcoming-features">
+            <h2>Upcoming Features</h2>
+            <p>We’re constantly working to enhance your experience! Stay tuned for features like advanced analytics, customizable portfolios, and much more.</p>
+        </div>
     </div>
 
-    <div class="features">
-        <div class="feature">
-            <h3>Real-Time Trading</h3>
-            <p>Engage in buying and selling stocks as you watch market trends and analyze data to make informed decisions.</p>
-        </div>
-        <div class="feature">
-            <h3>Interactive Tutorials</h3>
-            <p>New to stock trading? No worries! Our easy-to-follow tutorials will guide you through the basics and beyond.</p>
-        </div>
-        <div class="feature">
-            <h3>Community Features</h3>
-            <p>Join a vibrant community of fellow traders to share tips, strategies, and compete in exciting challenges.</p>
-        </div>
-    </div>
-
-    <div class="upcoming-features">
-        <h2>Upcoming Features</h2>
-        <p>We’re constantly working to enhance your experience! Stay tuned for features like advanced analytics, customizable portfolios, and much more.</p>
-    </div>
-</div>
-
-<footer>
-    <p>&copy; 2024 Development Team - All Rights Reserved. | <a href="https://github.com/skbidisigma1/stocks-sim" style="color: #fff;">GitHub Repository</a></p>
-</footer>
+    <footer>
+        <p>&copy; 2024 Development Team - All Rights Reserved. | <a href="https://github.com/skbidisigma1/stocks-sim" style="color: #fff;">GitHub Repository</a></p>
+    </footer>
 
 </body>
 </html>
