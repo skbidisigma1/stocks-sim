@@ -1,10 +1,8 @@
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f4f4f9;
-    display: flex;
-    flex-direction: column; /* Change to column layout */
-    min-height: 100vh; /* Ensure body takes full height */
     margin: 0;
+    padding-bottom: 60px; /* Space for the footer */
 }
 
 nav {
@@ -28,27 +26,32 @@ nav a:hover {
     text-decoration: underline;
 }
 
+header {
+    padding-top: 20px; /* Add this line for spacing */
+}
+
 .container {
-    flex: 1; /* Allow the container to grow and push the footer down */
-    padding-top: 60px; /* Offset for fixed navigation */
+    padding: 20px; /* Add this line for spacing */
 }
 
-.auth-container {
+.intro {
+    margin-bottom: 20px; /* Space between intro and features */
+}
+
+.features {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 20px;
+    justify-content: space-between; /* Align features side by side */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
-.auth-box {
+.feature {
     background-color: #fff;
-    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    text-align: center;
-    width: 300px;
-    max-width: 90%;
+    padding: 15px;
+    margin: 10px;
+    flex: 1 1 30%; /* Flex-grow, flex-shrink, flex-basis */
+    min-width: 250px; /* Minimum width for feature boxes */
 }
 
 h2 {
@@ -56,63 +59,26 @@ h2 {
     margin-bottom: 10px;
 }
 
+h3 {
+    color: #333;
+    margin-bottom: 5px;
+}
+
 p {
     color: #666;
     font-size: 0.9em;
 }
 
-.form-group {
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-label {
-    font-size: 0.85em;
-    color: #333;
-}
-
-input[type="text"], input[type="password"], input[type="email"] {
-    width: 100%;
-    padding: 12px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    margin-top: 5px;
-    font-size: 0.9em;
-}
-
-button {
-    background-color: #333;
-    color: #fff;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 1em;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #555;
-}
-
-.auth-link {
-    margin-top: 15px;
-    font-size: 0.85em;
-}
-
-.auth-link a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.auth-link a:hover {
-    text-decoration: underline;
+.upcoming-features {
+    margin-top: 20px; /* Space above upcoming features */
 }
 
 footer {
+    position: relative; /* Ensure footer moves with content */
     background-color: #333; /* Dark background for the footer */
     color: white; /* White text color */
     text-align: center; /* Centered text */
     padding: 10px 0; /* Padding for spacing */
+    width: 100%; /* Ensure it stretches across the page */
+    bottom: 0; /* Align footer to the bottom */
 }
