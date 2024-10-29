@@ -2,15 +2,13 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: #f4f4f9;
     margin: 0;
-    padding-bottom: 60px; /* Space for the footer */
+    padding: 0;
 }
 
 nav {
     background-color: #333;
     padding: 10px;
     text-align: center;
-    position: fixed;
-    top: 0;
     width: 100%;
     z-index: 1000;
 }
@@ -27,21 +25,21 @@ nav a:hover {
 }
 
 header {
-    padding-top: 20px; /* Add this line for spacing */
+    padding-top: 40px;
 }
 
 .container {
-    padding: 20px; /* Add this line for spacing */
+    padding: 20px;
 }
 
 .intro {
-    margin-bottom: 20px; /* Space between intro and features */
+    margin-bottom: 20px;
 }
 
 .features {
     display: flex;
-    justify-content: space-between; /* Align features side by side */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .feature {
@@ -50,8 +48,8 @@ header {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     padding: 15px;
     margin: 10px;
-    flex: 1 1 30%; /* Flex-grow, flex-shrink, flex-basis */
-    min-width: 250px; /* Minimum width for feature boxes */
+    flex: 1 1 30%;
+    min-width: 250px;
 }
 
 h2 {
@@ -70,15 +68,15 @@ p {
 }
 
 .upcoming-features {
-    margin-top: 20px; /* Space above upcoming features */
+    margin-top: 20px;
 }
 
 footer {
-    position: relative; /* Ensure footer moves with content */
-    background-color: #333; /* Dark background for the footer */
-    color: white; /* White text color */
-    text-align: center; /* Centered text */
-    padding: 10px 0; /* Padding for spacing */
-    width: 100%; /* Ensure it stretches across the page */
-    bottom: 0; /* Align footer to the bottom */
+    position: relative;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    bottom: 0;
 }
