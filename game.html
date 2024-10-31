@@ -178,7 +178,7 @@
                 const company = stock.querySelector('h3').textContent;
                 const priceElement = stock.querySelector('.price');
                 const currentPrice = parseFloat(priceElement.textContent);
-                const randomChange = (Math.random() * 10 - 5).toFixed(2); // Random change between -5 and +5
+                const randomChange = (Math.random() * 10 - 2).toFixed(2); // Random change between -5 and +5
                 const newPrice = (currentPrice + parseFloat(randomChange)).toFixed(2);
                 priceElement.textContent = newPrice > 0 ? newPrice : 0; // Ensure price doesn't go below 0
 
