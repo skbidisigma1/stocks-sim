@@ -101,3 +101,43 @@ footer {
     color: white;
     text-align: center;
 }
+.intro, .content-section {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.tutorial {
+    margin-bottom: 15px;
+}
+
+.tutorial h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.tutorial p {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.read-more:hover {
+    background-color: #555;
+}
+
+.faq {
+    margin-top: 20px;
+}
