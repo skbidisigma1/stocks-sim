@@ -123,7 +123,7 @@
 
     <div class="portfolio">
         <h2>Your Portfolio</h2>
-        <p id="portfolio-summary">You have not made any transactions yet.</p>
+        <p id="portfolio-summary">You have $1000 in cash and no stocks.</p>
     </div>
 
     <div class="chart-container">
@@ -238,7 +238,10 @@
                     }
                 }
             };
-            new Chart(ctx, config);
+            if (window.stockChart) {
+                window.stockChart.destroy(); // Destroy previous chart instance
+            }
+            window.stockChart = new Chart(ctx, config);
         }
 
         // Update stock prices every 3 seconds
