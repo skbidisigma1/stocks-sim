@@ -5,6 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Play Game</title>
     <link href="style.css" rel="stylesheet"> <!-- Link to main CSS file -->
+    <style>
+        /* Inline styles for the game section */
+        .game-container {
+            background-color: #2a2a2a; /* Darker grey for game background */
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .stock {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #333; /* Dark grey for stock items */
+            border-radius: 5px;
+        }
+
+        .stock h3 {
+            color: #76c7c0; /* Light green for stock names */
+            margin: 0;
+        }
+
+        .stock p {
+            color: #e0e0e0; /* Light grey for stock prices */
+            margin: 0;
+        }
+
+        .buy-button, .sell-button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .buy-button {
+            background-color: #28a745; /* Green for buy button */
+        }
+
+        .buy-button:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+
+        .sell-button {
+            background-color: #dc3545; /* Red for sell button */
+        }
+
+        .sell-button:hover {
+            background-color: #c82333; /* Darker red on hover */
+        }
+
+        .portfolio {
+            margin-top: 20px;
+            color: #e0e0e0; /* Light grey for portfolio text */
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -15,7 +74,82 @@
         <a href="leaderboard.html">Leaderboard</a>
         <a href="profile.html">Profile</a>
     </nav>
-    <h1>Page Title</h1>
-    <p>Game functionality will go here.</p>
+    
+    <h1>Stock Trading Game</h1>
+    <p>Welcome to the Stock Trading Game! Buy and sell stocks to grow your virtual portfolio.</p>
+
+    <div class="game-container">
+        <h2>Available Stocks</h2>
+        <div class="stock">
+            <div>
+                <h3>Company A</h3>
+                <p>Price: $100</p>
+            </div>
+            <div>
+                <button class="buy-button" onclick="buyStock('Company A', 100)">Buy</button>
+                <button class="sell-button" onclick="sellStock('Company A', 100)">Sell</button>
+            </div>
+        </div>
+        <div class="stock">
+            <div>
+                <h3>Company B</h3>
+                <p>Price: $150</p>
+            </div>
+            <div>
+                <button class="buy-button" onclick="buyStock('Company B', 150)">Buy</button>
+                <button class="sell-button" onclick="sellStock('Company B', 150)">Sell</button>
+            </div>
+        </div>
+        <div class="stock">
+            <div>
+                <h3>Company C</h3>
+                <p>Price: $200</p>
+            </div>
+            <div>
+                <button class="buy-button" onclick="buyStock('Company C', 200)">Buy</button>
+                <button class="sell-button" onclick="sellStock('Company C', 200)">Sell</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="portfolio">
+        <h2>Your Portfolio</h2>
+        <p id="portfolio-summary">You have not made any transactions yet.</p>
+    </div>
+
+    <script>
+        let portfolio = {
+            cash: 1000, // Starting cash
+            stocks: {}
+        };
+
+        function buyStock(company, price) {
+            if (portfolio.cash >= price) {
+                portfolio.cash -= price;
+                portfolio.stocks[company] = (portfolio.stocks[company] || 0) + 1;
+                updatePortfolio();
+            } else {
+                alert("Not enough cash to buy " + company);
+            }
+        }
+
+        function sellStock(company, price) {
+            if (portfolio.stocks[company] > 0) {
+                portfolio.cash += price;
+                portfolio.stocks[company] -= 1;
+                updatePortfolio();
+            } else {
+                alert("You don't own any shares of " + company);
+            }
+        }
+
+        function updatePortfolio() {
+            let summary = "Cash: $" + portfolio.cash + "<br>";
+            for (let stock in portfolio.stocks) {
+                summary += stock + ": " + portfolio.stocks[stock] + " shares<br>";
+            }
+            document.getElementById("portfolio-summary").innerHTML = summary;
+        }
+    </script>
 </body>
 </html>
