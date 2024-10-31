@@ -3,6 +3,7 @@ body {
     background-color: #f4f4f9;
     margin: 0;
     padding: 0;
+    line-height: 1.6;
 }
 
 nav {
@@ -33,55 +34,70 @@ header {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    text-align: center;
 }
 
-.intro {
-    margin-bottom: 20px;
-}
-
-.features {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.feature {
-    background-color: #fff;
+.intro, .content-section {
+    background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    padding: 15px;
-    margin: 10px;
-    flex: 1 1 30%;
-    min-width: 250px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
 h2 {
     color: #333;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+}
+
+.term, .strategy, .step {
+    margin-bottom: 15px;
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+}
+
+.step-number {
+    background-color: #333;
+    color: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.step-content {
+    flex: 1;
+}
+
+ul.resource-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul.resource-list li {
     margin-bottom: 10px;
 }
 
-h3 {
+ul.resource-list li a {
     color: #333;
-    margin-bottom: 5px;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-p {
-    color: #666;
-    font-size: 0.9em;
-}
-
-.upcoming-features {
-    margin-top: 20px;
-    text-align: center;
+ul.resource-list li a:hover {
+    text-decoration: underline;
 }
 
 footer {
-    position: relative;
+    padding: 20px 0;
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 10px 0;
-    width: 100%;
-    bottom: 0;
 }
