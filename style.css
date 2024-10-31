@@ -141,3 +141,27 @@ footer {
 .faq {
     margin-top: 20px;
 }
+.intro, .content-section {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+}
+
+ul, ol {
+    margin-left: 20px; /* Indent lists for better readability */
+}
+
+footer {
+    padding: 20px 0;
+    background-color: #333;
+    color: white;
+    text-align: center;
+}
