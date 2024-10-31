@@ -1,13 +1,14 @@
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f4f4f9;
+    background-color: #1e1e1e; /* Dark background */
+    color: #e0e0e0; /* Light grey text */
     margin: 0;
     padding: 0;
     line-height: 1.6;
 }
 
 nav {
-    background-color: #333;
+    background-color: #333; /* Dark grey for navigation */
     padding: 10px;
     text-align: center;
     width: 100%;
@@ -15,7 +16,7 @@ nav {
 }
 
 nav a {
-    color: #fff;
+    color: #e0e0e0; /* Light grey for links */
     margin: 0 15px;
     text-decoration: none;
     font-weight: 500;
@@ -23,6 +24,7 @@ nav a {
 
 nav a:hover {
     text-decoration: underline;
+    color: #76c7c0; /* Light green on hover */
 }
 
 header {
@@ -37,15 +39,15 @@ header {
 }
 
 .intro, .content-section {
-    background-color: #ffffff;
+    background-color: #2a2a2a; /* Darker grey for sections */
     border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     padding: 20px;
     margin-bottom: 20px;
 }
 
 h2 {
-    color: #333;
+    color: #76c7c0; /* Light green for headings */
     margin-bottom: 15px;
     font-size: 1.8em;
 }
@@ -60,7 +62,7 @@ h2 {
 }
 
 .step-number {
-    background-color: #333;
+    background-color: #333; /* Dark grey for step numbers */
     color: #fff;
     border-radius: 50%;
     width: 30px;
@@ -86,7 +88,7 @@ ul.resource-list li {
 }
 
 ul.resource-list li a {
-    color: #333;
+    color: #76c7c0; /* Light green for resource links */
     text-decoration: none;
     font-weight: bold;
 }
@@ -97,16 +99,9 @@ ul.resource-list li a:hover {
 
 footer {
     padding: 20px 0;
-    background-color: #333;
-    color: white;
+    background-color: #333; /* Dark grey for footer */
+    color: #e0e0e0; /* Light grey text */
     text-align: center;
-}
-.intro, .content-section {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
 }
 
 .tutorial {
@@ -114,12 +109,12 @@ footer {
 }
 
 .tutorial h3 {
-    color: #333;
+    color: #76c7c0; /* Light green for tutorial headings */
     margin-bottom: 10px;
 }
 
 .tutorial p {
-    color: #666;
+    color: #b0b0b0; /* Medium grey for tutorial text */
     font-size: 0.9em;
 }
 
@@ -127,7 +122,7 @@ footer {
     display: inline-block;
     margin-top: 10px;
     padding: 10px 15px;
-    background-color: #333;
+    background-color: #76c7c0; /* Light green background */
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
@@ -135,74 +130,9 @@ footer {
 }
 
 .read-more:hover {
-    background-color: #555;
+    background-color: #5ab8b0; /* Darker green on hover */
 }
 
-.faq {
-    margin-top: 20px;
-}
-.intro, .content-section {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-h2 {
-    color: #333;
-    margin-bottom: 15px;
-    font-size: 1.8em;
-}
-
-ul, ol {
-    margin-left: 20px; /* Indent lists for better readability */
-}
-
-footer {
-    padding: 20px 0;
-    background-color: #333;
-    color: white;
-    text-align: center;
-}
-.intro, .content-section {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-h2 {
-    color: #333;
-    margin-bottom: 15px;
-    font-size: 1.8em;
-}
-
-ul, ol {
-    margin-left: 20px; /* Indent lists for better readability */
-}
-
-footer {
-    padding: 20px 0;
-    background-color: #333;
-    color: white;
-    text-align: center;
-}
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 10px;
-    background-color: #28a745; /* Green background */
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-    background-color: #218838; /* Darker green on hover */
-}
 .faq-section {
     margin-bottom: 20px;
 }
@@ -214,8 +144,28 @@ footer {
 .faq-item h3 {
     cursor: pointer;
     transition: color 0.3s ease;
+    color: #76c7c0; /* Light green for FAQ headings */
 }
 
 .faq-item h3:hover {
-    color: #007bff; /* Change color on hover */
+    color: #5ab8b0; /* Darker green on hover */
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #76c7c0; /* Light green background */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #5ab8b0; /* Darker green on hover */
+}
+
+ul, ol {
+    margin-left: 20px; /* Indent lists for better readability */
 }
