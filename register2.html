@@ -215,6 +215,8 @@
                 if (passwordInput) {
                     // Set a cookie with the email value
                     document.cookie = "userPassword=" + encodeURIComponent(passwordInput) + "; path=/; max-age=360000"; // Expires in 1 hour
+
+                    window.location.href = 'profile.html';
                 } else {
                     alert('Please enter a password.');
                 }
