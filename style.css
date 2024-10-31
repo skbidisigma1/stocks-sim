@@ -203,3 +203,19 @@ footer {
 .btn:hover {
     background-color: #218838; /* Darker green on hover */
 }
+.faq-section {
+    margin-bottom: 20px;
+}
+
+.faq-item {
+    margin: 10px 0;
+}
+
+.faq-item h3 {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.faq-item h3:hover {
+    color: #007bff; /* Change color on hover */
+}
