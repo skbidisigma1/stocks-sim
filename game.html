@@ -80,30 +80,30 @@
 
     <div class="game-container">
         <h2>Available Stocks</h2>
-        <div class="stock">
+        <div class="stock" id="stockA">
             <div>
                 <h3>Company A</h3>
-                <p>Price: $100</p>
+                <p>Price: $<span class="price">100</span></p>
             </div>
             <div>
                 <button class="buy-button" onclick="buyStock('Company A', 100)">Buy</button>
                 <button class="sell-button" onclick="sellStock('Company A', 100)">Sell</button>
             </div>
         </div>
-        <div class="stock">
+        <div class="stock" id="stockB">
             <div>
                 <h3>Company B</h3>
-                <p>Price: $150</p>
+                <p>Price: $<span class="price">150</span></p>
             </div>
             <div>
                 <button class="buy-button" onclick="buyStock('Company B', 150)">Buy</button>
                 <button class="sell-button" onclick="sellStock('Company B', 150)">Sell</button>
             </div>
         </div>
-        <div class="stock">
+        <div class="stock" id="stockC">
             <div>
                 <h3>Company C</h3>
-                <p>Price: $200</p>
+                <p>Price: $<span class="price">200</span></p>
             </div>
             <div>
                 <button class="buy-button" onclick="buyStock('Company C', 200)">Buy</button>
@@ -150,6 +150,20 @@
             }
             document.getElementById("portfolio-summary").innerHTML = summary;
         }
+
+        function updateStockPrices() {
+            const stocks = document.querySelectorAll('.stock');
+            stocks.forEach(stock => {
+                const priceElement = stock.querySelector('.price');
+                const currentPrice = parseFloat(priceElement.textContent);
+                const randomChange = (Math.random() * 10 - 5).toFixed(2); // Random change between -5 and +5
+                const newPrice = (currentPrice + parseFloat(randomChange)).toFixed(2);
+                priceElement.textContent = newPrice > 0 ? newPrice : 0; // Ensure price doesn't go below 0
+            });
+        }
+
+        // Update stock prices every 10 seconds
+        setInterval(updateStockPrices, 10000);
     </script>
 </body>
 </html>
