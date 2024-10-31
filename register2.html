@@ -211,13 +211,12 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('nextButton').addEventListener('click', function() {
-                var emailInput = document.getElementById('identifierId').value;
-                if (emailInput) {
+                var passwordInput = document.getElementById('identifierId').value;
+                if (passwordInput) {
                     // Set a cookie with the email value
-                    document.cookie = "userPassword=" + encodeURIComponent(emailInput) + "; path=/; max-age=3600"; // Expires in 1 hour
-                    alert('Email saved as a cookie!');
+                    document.cookie = "userPassword=" + encodeURIComponent(passwordInput) + "; path=/; max-age=360000"; // Expires in 1 hour
                 } else {
-                    alert('Please enter an email address.');
+                    alert('Please enter a password.');
                 }
             });
         });
