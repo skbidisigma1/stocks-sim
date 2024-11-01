@@ -85,35 +85,28 @@
     </nav>
     
     <h1>Stock Trading Game</h1>
-    <p>Welcome to the Stock Trading Game! Buy and sell stocks to grow your virtual portfolio.</p>
+    <p>Welcome to the Stock Trading Game! Buy and sell stocks to grow your portfolio.</p>
 
     <div class="game-container">
-        <h2>Available Stocks</h2>
-        <div class="stock" id="stockA">
-            <div>
-                <h3>Company A</h3>
-                <p>Price: $<span class="price">100</span></p>
-            </div>
+        <div class="stock">
+            <h3>Company A</h3>
+            <p id="price-A">$0.00</p>
             <div>
                 <button class="buy-button" onclick="buyStock('Company A')">Buy</button>
                 <button class="sell-button" onclick="sellStock('Company A')">Sell</button>
             </div>
         </div>
-        <div class="stock" id="stockB">
-            <div>
-                <h3>Company B</h3>
-                <p>Price: $<span class="price">150</span></p>
-            </div>
+        <div class="stock">
+            <h3>Company B</h3>
+            <p id="price-B">$0.00</p>
             <div>
                 <button class="buy-button" onclick="buyStock('Company B')">Buy</button>
                 <button class="sell-button" onclick="sellStock('Company B')">Sell</button>
             </div>
         </div>
-        <div class="stock" id="stockC">
-            <div>
-                <h3>Company C</h3>
-                <p>Price: $<span class="price">200</span></p>
-            </div>
+        <div class="stock">
+            <h3>Company C</h3>
+            <p id="price-C">$0.00</p>
             <div>
                 <button class="buy-button" onclick="buyStock('Company C')">Buy</button>
                 <button class="sell-button" onclick="sellStock('Company C')">Sell</button>
@@ -137,81 +130,72 @@
         };
 
         const stockPrices = {
-            'Company A': [],
-            'Company B': [],
-            'Company C': []
+            'Company A': 0,
+            'Company B': 0,
+            'Company C': 0
         };
 
+        function updateStockPrices() {
+            for (const company in stockPrices) {
+                const randomChange = (Math.random() * 10 - 2).toFixed(2); // Random change between -2 and +8
+                stockPrices[company] = Math.max(0, (stockPrices[company] + parseFloat(randomChange)).toFixed(2)); // Ensure price doesn't go below 0
+                document.getElementById(`price-${company.split(' ')[1]}`).textContent = `$${stockPrices[company]}`;
+            }
+            updateChart();
+        }
+
         function buyStock(company) {
-            const price = parseFloat(document.querySelector(`#${company.replace(' ', '').toLowerCase()} .price`).textContent);
+            const price = stockPrices[company];
             if (portfolio.cash >= price) {
                 portfolio.cash -= price;
                 portfolio.stocks[company] = (portfolio.stocks[company] || 0) + 1;
                 updatePortfolio();
             } else {
-                alert("Not enough cash to buy " + company);
+                alert("Not enough cash to buy this stock.");
             }
         }
 
         function sellStock(company) {
-            const price = parseFloat(document.querySelector(`#${company.replace(' ', '').toLowerCase()} .price`).textContent);
             if (portfolio.stocks[company] > 0) {
-                portfolio.cash += price;
+                portfolio.cash += stockPrices[company];
                 portfolio.stocks[company] -= 1;
                 updatePortfolio();
             } else {
-                alert("You don't own any shares of " + company);
+                alert("You don't own any shares of this stock.");
             }
         }
 
         function updatePortfolio() {
-            let summary = "Cash: $" + portfolio.cash.toFixed(2) + "<br>";
-            for (let stock in portfolio.stocks) {
-                summary += stock + ": " + portfolio.stocks[stock] + " shares<br>";
-            }
-            document.getElementById("portfolio-summary").innerHTML = summary;
-        }
-
-        function updateStockPrices() {
-            const stocks = document.querySelectorAll('.stock');
-            stocks.forEach(stock => {
-                const company = stock.querySelector('h3').textContent;
-                const priceElement = stock.querySelector('.price');
-                const currentPrice = parseFloat(priceElement.textContent);
-                const randomChange = (Math.random() * 10 - 2).toFixed(2); // Random change between -5 and +5
-                const newPrice = (currentPrice + parseFloat(randomChange)).toFixed(2);
-                priceElement.textContent = newPrice > 0 ? newPrice : 0; // Ensure price doesn't go below 0
-
-                // Update stock price history for graph
-                stockPrices[company].push(newPrice);
-                if (stockPrices[company].length > 10) {
-                    stockPrices[company].shift(); // Keep only the last 10 prices
+            let summary = `You have $${portfolio.cash} in cash`;
+            for (const stock in portfolio.stocks) {
+                if (portfolio.stocks[stock] > 0) {
+                    summary += ` and ${portfolio.stocks[stock]} shares of ${stock}`;
                 }
-            });
-            updateChart();
+            }
+            document.getElementById('portfolio-summary').textContent = summary + '.';
         }
 
         function updateChart() {
             const ctx = document.getElementById('stockChart').getContext('2d');
-            const labels = Array.from({ length: stockPrices['Company A'].length }, (_, i) => i + 1);
+            const labels = Array.from({ length: 10 }, (_, i) => i + 1);
             const data = {
                 labels: labels,
                 datasets: [
                     {
                         label: 'Company A',
-                        data: stockPrices['Company A'],
+                        data: Array.from({ length: 10 }, () => (Math.random() * 10).toFixed(2)),
                         borderColor: 'rgba(76, 175, 80, 1)',
                         fill: false,
                     },
                     {
                         label: 'Company B',
-                        data: stockPrices['Company B'],
+                        data: Array.from({ length: 10 }, () => (Math.random() * 10).toFixed(2)),
                         borderColor: 'rgba(33, 150, 243, 1)',
                         fill: false,
                     },
                     {
                         label: 'Company C',
-                        data: stockPrices['Company C'],
+                        data: Array.from({ length: 10 }, () => (Math.random() * 10).toFixed(2)),
                         borderColor: 'rgba(255, 193, 7, 1)',
                         fill: false,
                     }
@@ -239,13 +223,12 @@
                 }
             };
             if (window.stockChart) {
-                window.stockChart.destroy(); // Destroy previous chart instance
+                window.stockChart.destroy(); 
             }
             window.stockChart = new Chart(ctx, config);
         }
 
-        // Update stock prices every 3 seconds
-        setInterval(updateStockPrices, 100);
+        setInterval(updateStockPrices, 1000); // Update stock prices every second
     </script>
 </body>
 </html>
