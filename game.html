@@ -122,113 +122,131 @@
     <div class="chart-container">
         <canvas id="stockChart"></canvas>
     </div>
+<script>
+    let portfolio = {
+        cash: 1000, // Starting cash
+        stocks: {}
+    };
 
-    <script>
-        let portfolio = {
-            cash: 1000, // Starting cash
-            stocks: {}
-        };
+    const stockPrices = {
+        'Company A': 0,
+        'Company B': 0,
+        'Company C': 0
+    };
 
-        const stockPrices = {
-            'Company A': 0,
-            'Company B': 0,
-            'Company C': 0
-        };
-
-        function updateStockPrices() {
-            for (const company in stockPrices) {
-                const randomChange = (Math.random() * 10 - 2).toFixed(2); // Random change between -2 and +8
-                stockPrices[company] = Math.max(0, (stockPrices[company] + parseFloat(randomChange)).toFixed(2)); // Ensure price doesn't go below 0
-                document.getElementById(`price-${company.split(' ')[1]}`).textContent = `$${stockPrices[company]}`;
-            }
-            updateChart();
+    // Load portfolio from local storage
+    function loadPortfolio() {
+        const savedPortfolio = JSON.parse(localStorage.getItem('portfolio'));
+        if (savedPortfolio) {
+            portfolio = savedPortfolio;
         }
+        updatePortfolio();
+    }
 
-        function buyStock(company) {
-            const price = stockPrices[company];
-            if (portfolio.cash >= price) {
-                portfolio.cash -= price;
-                portfolio.stocks[company] = (portfolio.stocks[company] || 0) + 1;
-                updatePortfolio();
-            } else {
-                alert("Not enough cash to buy this stock.");
+    // Save portfolio to local storage
+    function savePortfolio() {
+        localStorage.setItem('portfolio', JSON.stringify(portfolio));
+    }
+
+    function updateStockPrices() {
+        for (const company in stockPrices) {
+            const randomChange = (Math.random() * 10 - 2).toFixed(2); // Random change between -2 and +8
+            stockPrices[company] = Math.max(0, (stockPrices[company] + parseFloat(randomChange)).toFixed(2)); // Ensure price doesn't go below 0
+            document.getElementById(`price-${company.split(' ')[1]}`).textContent = `$${stockPrices[company]}`;
+        }
+        updateChart();
+    }
+
+    function buyStock(company) {
+        const price = stockPrices[company];
+        if (portfolio.cash >= price) {
+            portfolio.cash -= price;
+            portfolio.stocks[company] = (portfolio.stocks[company] || 0) + 1;
+            updatePortfolio();
+            savePortfolio(); // Save after buying
+        } else {
+            alert("Not enough cash to buy this stock.");
+        }
+    }
+
+    function sellStock(company) {
+        if (portfolio.stocks[company] > 0) {
+            portfolio.cash += stockPrices[company];
+            portfolio.stocks[company] -= 1;
+            updatePortfolio();
+            savePortfolio(); // Save after selling
+        } else {
+            alert("You don't own any shares of this stock.");
+        }
+    }
+
+    function updatePortfolio() {
+        let summary = `You have $${portfolio.cash} in cash`;
+        for (const stock in portfolio.stocks) {
+            if (portfolio.stocks[stock] > 0) {
+                summary += ` and ${portfolio.stocks[stock]} shares of ${stock}`;
             }
         }
+        document.getElementById('portfolio-summary').textContent = summary + '.';
+    }
 
-        function sellStock(company) {
-            if (portfolio.stocks[company] > 0) {
-                portfolio.cash += stockPrices[company];
-                portfolio.stocks[company] -= 1;
-                updatePortfolio();
-            } else {
-                alert("You don't own any shares of this stock.");
-            }
-        }
-
-        function updatePortfolio() {
-            let summary = `You have $${portfolio.cash} in cash`;
-            for (const stock in portfolio.stocks) {
-                if (portfolio.stocks[stock] > 0) {
-                    summary += ` and ${portfolio.stocks[stock]} shares of ${stock}`;
+    function updateChart() {
+        const ctx = document.getElementById('stockChart').getContext('2d');
+        const labels = Array.from({ length: 10 }, (_, i) => i + 1);
+        const data = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Company A',
+                    data: Array.from({ length: 10 }, () => (Math.random() * 10).toFixed(2)),
+                    borderColor: 'rgba(76, 175, 80, 1)',
+                    fill: false,
+                },
+                {
+                    label: 'Company B',
+                    data: Array.from({ length: 10 }, () => (Math.random() * 10).toFixed(2)),
+                    borderColor: 'rgba(33, 150, 243, 1)',
+                    fill: false,
+                },
+                {
+                    label: 'Company C',
+                    data: Array.from({ length: 10 }, () => (Math.random() * 10).toFixed(2)),
+                    borderColor: 'rgba(255, 193, 7, 1)',
+                    fill: false,
                 }
-            }
-            document.getElementById('portfolio-summary').textContent = summary + '.';
-        }
-
-        function updateChart() {
-            const ctx = document.getElementById('stockChart').getContext('2d');
-            const labels = Array.from({ length: 10 }, (_, i) => i + 1);
-            const data = {
-                labels: labels,
-                datasets: [
-                    {
-                        label: 'Company A',
-                        data: Array.from({ length: 10 }, () => (Math.random() * 10).toFixed(2)),
-                        borderColor: 'rgba(76, 175, 80, 1)',
-                        fill: false,
+            ]
+        };
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Time'
+                        }
                     },
-                    {
-                        label: 'Company B',
-                        data: Array.from({ length: 10 }, () => (Math.random() * 10).toFixed(2)),
-                        borderColor: 'rgba(33, 150, 243, 1)',
-                        fill: false,
-                    },
-                    {
-                        label: 'Company C',
-                        data: Array.from({ length: 10 }, () => (Math.random() * 10).toFixed(2)),
-                        borderColor: 'rgba(255, 193, 7, 1)',
-                        fill: false,
-                    }
-                ]
-            };
-            const config = {
-                type: 'line',
-                data: data,
-                options: {
-                    responsive: true,
-                    scales: {
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Time'
-                            }
-                        },
-                        y: {
-                            title: {
-                                display: true,
-                                text: 'Price ($)'
-                            }
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Price ($)'
                         }
                     }
                 }
-            };
-            if (window.stockChart) {
-                window.stockChart.destroy(); 
             }
-            window.stockChart = new Chart(ctx, config);
+        };
+        if (window.stockChart) {
+            window.stockChart.destroy(); 
         }
+        window.stockChart = new Chart(ctx, config);
+    }
 
-        setInterval(updateStockPrices, 1000); // Update stock prices every second
-    </script>
+    // Call loadPortfolio on page load
+    window.onload = loadPortfolio;
+
+    setInterval(updateStockPrices, 1000); // Update stock prices every second
+</script>
 </body>
 </html>
